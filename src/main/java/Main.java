@@ -5,34 +5,34 @@ public class Main {
     static double[] interestRates = new double[100];
     static int loansCount = 0;
 
-    public static void addLoan(String borrower, int amount, double interestRate){
+    public static void addLoan(String borrower, int amount, double interestRate) {
         borrowers[loansCount] = borrower;
         amounts[loansCount] = amount;
         interestRates[loansCount] = interestRate;
         loansCount++;
     }
 
-    public static void setAsPaid(String borrower){
-        for (int i=0; i< loansCount; i++){
-            if (borrowers[i].equals(borrower)){
+    public static void setAsPaid(String borrower) {
+        for (int i = 0; i < loansCount; i++) {
+            if (borrowers[i].equals(borrower)) {
                 isPaid[i] = true;
             }
         }
     }
 
-    public static void listLoans(){
-        for (int i=0; i< loansCount; i++){
-            if (!isPaid[i]){
+    public static void listLoans() {
+        for (int i = 0; i < loansCount; i++) {
+            if (!isPaid[i]) {
                 System.out.println(borrowers[i] + ": " + amounts[i]);
             }
         }
     }
 
-    public static double calculateProfitEarned(){
+    public static double calculateProfitEarned() {
         double profit = 0;
-        for (int i=0; i< loansCount; i++){
+        for (int i = 0; i < loansCount; i++) {
             // if the loan was repaid, add the interest to profit
-            if (isPaid[i]){
+            if (isPaid[i]) {
                 profit = profit + (amounts[i] * interestRates[i]);
             }
         }
