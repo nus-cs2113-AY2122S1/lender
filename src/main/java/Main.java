@@ -5,6 +5,8 @@ public class Main {
     static double[] interestRates = new double[100];
     static int loansCount = 0;
 
+    static Loan[] loans = new Loan[100];
+
     public static void addLoan(String borrower, int amount, double interestRate) {
         borrowers[loansCount] = borrower;
         amounts[loansCount] = amount;
@@ -14,15 +16,16 @@ public class Main {
 
     public static void setAsPaid(String borrower) {
         for (int i = 0; i < loansCount; i++) {
-            if (borrowers[i].equals(borrower)) {
-                isPaid[i] = true;
+            if (loans[i].getBorrower().equals(borrower)) {
+                loans[i].setAsPaid();
             }
         }
     }
 
     public static void listLoans() {
         for (int i = 0; i < loansCount; i++) {
-            if (!isPaid[i]) {
+            Loan loan = loans[i];
+            if (!loan.isPaid()) {
                 System.out.println(borrowers[i] + ": " + amounts[i]);
             }
         }
